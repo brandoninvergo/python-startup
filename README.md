@@ -124,11 +124,11 @@ that sometimes in my interactive sessions, I had forgotten the
 specific details of a function definition.  However, going back
 through the command history would only show it one line at a time, and
 in reverse at that.  So, the start-up script provides a function
-decorator, `saved_function` that allows you to recall and print a the
-definition of a function entered at the command-line [4].  Simply pass
-it the line in the command history where the function definition will
-begin (i.e. the next line after the one where the decorator is being
-entered).
+decorator, `saved_function` that allows you to recall and print the
+definition of a function that was entered at the command-line [4].
+Simply pass it the line in the command history where the function
+definition will begin (i.e. the next line after the one where the
+decorator is being entered).
 
 For example:
 
