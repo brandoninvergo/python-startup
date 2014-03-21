@@ -19,7 +19,7 @@
  !-- along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-# A minimalish-but-handy python start-up script
+# An enhanced Python interpreter via a start-up script
 
 Do you enjoy some of the basic features of the alternative Python
 interpreters out there but you find them to be otherwise bloated?  It
