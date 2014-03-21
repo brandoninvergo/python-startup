@@ -145,7 +145,7 @@ For example:
 
 [1]  But I explicitly do not want to turn this into another iPython.
 
-[2]  For some reason, the Python `readline` module is quite unflexible
+[2]  For some reason, the Python `readline` module is quite inflexible
 in its key-bindings.  You cannot override some existing bindings for
 some reason.  For example, `Ctrl-i`, which would be a natural choice
 for adding to the indentation level, is inextricably tied to the
