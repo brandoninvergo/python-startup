@@ -149,9 +149,10 @@ For example:
 in its key-bindings.  You cannot override some existing bindings for
 some reason.  For example, `Ctrl-i`, which would be a natural choice
 for adding to the indentation level, is inextricably tied to the
-`<Tab>` key, causing it to always do completion.
+`<Tab>` key, causing it to always do completion, even if you try to
+re-bind it.
 
-[3]  This is due to the nature of the Python `readline` module and, to
+[3] This is due to the nature of the Python `readline` module and, to
 my knowledge, there's no way around it.  Another side effect of this
 is that you will have to hit `<Enter>` a couple times to end a block
 of code.  Imagine you enter a one-line function.  The function
@@ -159,11 +160,11 @@ definition is at indentation level 0 and the line that comprises the
 body of the function will be at indentation level 1.  After you enter
 the body line, if you start typing again, the text will be entered at
 level 1.  However, if you just hit `<Enter>` to finish the block, the
-`readline` module will first indent to level 1 and then finish the
-block.  The next time you hit `<Enter>`, the previous blank line will
-be recognized and the block will be completed.  Again, to my
-knowledge, there is no way around this behavior (but I welcome any
-bug-fixes for it).
+`readline` module will accept that as "typing" and will first indent
+to level 1 before entering the line.  The next time you hit `<Enter>`,
+the previous blank line will be recognized by the auto-indentation
+code and the block will be completed.  Again, to my knowledge, there
+is no way around this behavior (but I welcome any bug-fixes for it).
 
 [4]  If you want to see the definition of an imported function, you can
 use the `getsource` function of the `inspect` module.
