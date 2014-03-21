@@ -143,10 +143,10 @@ For example:
 
 # Footnotes: 
 
-<a name="fn1">
+<div id="fn1">
 [1]  But I explicitly do not want to turn this into another iPython.
 
-<a name="fn2">
+<div id="fn2">
 [2]  For some reason, the Python `readline` module is quite inflexible
 in its key-bindings.  You cannot override some existing bindings for
 some reason.  For example, `Ctrl-i`, which would be a natural choice
@@ -154,7 +154,7 @@ for adding to the indentation level, is inextricably tied to the
 `<Tab>` key, causing it to always do completion, even if you try to
 re-bind it.
 
-<a name="fn3">
+<div id="fn3">
 [3] This is due to the nature of the Python `readline` module and, to
 my knowledge, there's no way around it.  Another side effect of this
 is that you will have to hit `<Enter>` a couple times to end a block
@@ -169,6 +169,6 @@ the previous blank line will be recognized by the auto-indentation
 code and the block will be completed.  Again, to my knowledge, there
 is no way around this behavior (but I welcome any bug-fixes for it).
 
-<a name="fn4">
+<div id="fn4">
 [4]  If you want to see the definition of an imported function, you can
 use the `getsource` function of the `inspect` module.
