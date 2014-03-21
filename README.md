@@ -52,7 +52,8 @@ hear about it [1].
 
 This comes as a bit of a side-effect: in order to implement some of
 the functions in the start-up script, some modules had to be imported.
-The benefit of this is that you won't need to import some modules,
+The benefit of this is that you won't need to import some modules in
+your interactive sessions,
 particularly `os.path` and `sys`.
 
 Also, for Python 2, the `print` function is imported from
