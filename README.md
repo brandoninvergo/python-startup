@@ -114,7 +114,8 @@ indented as necessary.  For example, if you enter an `if` command,
 then the next line will automatically indent itself one level
 inwards.  If you then unindent a level, all lines after that will be
 at the new indentation level. Note that the indentation will happen as
-soon as you start typing [3].
+soon as you start typing, not as soon as the prompt appears like you
+might expect [3].
 
 ## Printable functions
 
