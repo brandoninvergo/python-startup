@@ -44,7 +44,7 @@ The script is compatible with both Python 2 and Python 3.
 
 I highly recommend reading the code and modifying it to suit your
 tastes.  Of course, if you hack up some cool new feature, I'd love to
-hear about it [[1]](#fn1).
+hear about it [[1]](#footnotes).
 
 # Features
 
@@ -105,7 +105,8 @@ indentation for you.  `Ctrl-j` will indent four spaces while `Ctrl-u`
 will unindent four spaces.  These commands behave the way you would
 expect: you can use them with the cursor residing anywhere in the
 line, even in the middle of text (as opposed to having to move to the
-beginning of the line and entering the spaces manually) [[2]](#fn2).
+beginning of the line and entering the spaces manually)
+[[2]](#footnotes).
 
 ## Context-specific auto-indentation
 
@@ -115,7 +116,7 @@ then the next line will automatically indent itself one level
 inwards.  If you then unindent a level, all lines after that will be
 at the new indentation level. Note that the indentation will happen as
 soon as you start typing, not as soon as the prompt appears like you
-might expect [[3]](#fn3).
+might expect [[3]](#footnotes).
 
 ## Printable functions
 
@@ -126,9 +127,9 @@ through the command history would only show it one line at a time, and
 in reverse at that.  So, the start-up script provides a function
 decorator, `saved_function` that allows you to recall and print the
 definition of a function that was entered at the command-line
-[[4]](#fn4).  Simply pass it the line in the command history where the
-function definition will begin (i.e. the next line after the one where
-the decorator is being entered).
+[[4]](#footnotes).  Simply pass it the line in the command history
+where the function definition will begin (i.e. the next line after the
+one where the decorator is being entered).
 
 For example:
 
@@ -143,10 +144,8 @@ For example:
 
 # Footnotes: 
 
-<div id="fn1">
 [1]  But I explicitly do not want to turn this into another iPython.
 
-<div id="fn2">
 [2]  For some reason, the Python `readline` module is quite inflexible
 in its key-bindings.  You cannot override some existing bindings for
 some reason.  For example, `Ctrl-i`, which would be a natural choice
@@ -154,7 +153,6 @@ for adding to the indentation level, is inextricably tied to the
 `<Tab>` key, causing it to always do completion, even if you try to
 re-bind it.
 
-<div id="fn3">
 [3] This is due to the nature of the Python `readline` module and, to
 my knowledge, there's no way around it.  Another side effect of this
 is that you will have to hit `<Enter>` a couple times to end a block
@@ -169,6 +167,5 @@ the previous blank line will be recognized by the auto-indentation
 code and the block will be completed.  Again, to my knowledge, there
 is no way around this behavior (but I welcome any bug-fixes for it).
 
-<div id="fn4">
 [4]  If you want to see the definition of an imported function, you can
 use the `getsource` function of the `inspect` module.
