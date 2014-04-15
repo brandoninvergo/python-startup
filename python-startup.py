@@ -93,7 +93,7 @@ class saved_function(object):
         return printable_function(func, self.start, self.end)
 
 
-def ansi_colorize(text, color, state):
+def ansi_colorize(text, color, state, prompt=False):
     """Wrap a string in ANSI color escape characters.  This function also
     adds some extra escapes specifically so Readline will be able to
     accurately judge the length of the color prompt.  The "state" can
@@ -110,7 +110,10 @@ def ansi_colorize(text, color, state):
     elif state == "bright":
         col += 60
         mod = "0;"
-    return "\001\033[{0}{1}m\002{2}\001\033[00m\002".format(mod, col, text)
+    if prompt:
+        return "\001\033[{0}{1}m\002{2}\001\033[00m\002".format(mod, col, text)
+    else:
+        return "\033[{0}{1}m{2}\033[00m".format(mod, col, text)
 
 
 class CustomPS1:
@@ -123,7 +126,8 @@ class CustomPS1:
         """
         line_no = readline.get_current_history_length() + 1
         cur_prompt = self.prompt.format(line_no)
-        return "{0}".format(ansi_colorize(cur_prompt, "green", "bold"))
+        return "{0}".format(ansi_colorize(cur_prompt, "green", "bold",
+                                          prompt=True))
 
     def __len__(self):
         """Return the length of the prompt without any escape sequences."""
@@ -143,7 +147,8 @@ class CustomPS2:
         """
         line_no = readline.get_current_history_length() + 1
         cur_prompt = self.prompt.format(line_no)
-        return "{0}".format(ansi_colorize(cur_prompt, "yellow", "bold"))
+        return "{0}".format(ansi_colorize(cur_prompt, "yellow", "bold",
+                                          prompt=True))
 
     def __len__(self):
         """Return the length of the prompt without any escape sequences."""
