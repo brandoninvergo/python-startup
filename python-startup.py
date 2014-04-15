@@ -26,18 +26,11 @@ import sys
 import atexit
 import readline
 import rlcompleter
-from pprint import pprint
+from keyword import iskeyword
 
 
 ANSI_COLS = {"black": 30, "red": 31, "green": 32, "yellow": 33, "blue": 34,
              "purple": 35, "cyan": 36, "white": 37}
-
-
-KEYWORDS = ["and", "del", "for", "is", "raise", "assert", "elif",
-            "from", "lambda", "return", "break", "else", "global",
-            "not", "try", "class", "except", "if", "or", "while",
-            "continue", "exec", "import", "pass", "yield", "def",
-            "finally", "in", "print"]
 
 
 class printable_function(object):
@@ -214,7 +207,7 @@ def comp_disp_matches(substitution, matches, longest_match_length):
         else:
             mod_str = ""
         # Keywords: bright yellow
-        if w_strip in KEYWORDS:
+        if iskeyword(w_strip):
             w_str = ansi_colorize(w, "yellow", "bright")
         # Modules: bold yellow
         elif w_strip in sys.modules:
@@ -288,7 +281,7 @@ def setup_readline():
     readline.parse_and_bind(r'"\C-j": "\M-\C-j\C-a\M-j\C-x\C-x\M-e"')
     # C-u macro: Move back four characters, set mark, move to the
     # beginning of the line, move forward four characters, delete four
-    # characters, then exchange mark and point.  This would be shorter 
+    # characters, then exchange mark and point. This would be shorter
     # readline.parse_and_bind(r'"\C-u": "\M-g\M-\C-j\C-a\M-e\M-k\C-x\C-x"')
     readline.parse_and_bind(r'"\C-u": "\M-g\M-\C-j\C-a\M-k\C-x\C-x"')
     # load readline history
