@@ -105,8 +105,7 @@ def ansi_colorize(text, color, state, prompt=False):
         mod = "0;"
     if prompt:
         return "\001\033[{0}{1}m\002{2}\001\033[00m\002".format(mod, col, text)
-    else:
-        return "\033[{0}{1}m{2}\033[00m".format(mod, col, text)
+    return "\033[{0}{1}m{2}\033[00m".format(mod, col, text)
 
 
 class CustomPS1:
