@@ -206,8 +206,11 @@ def comp_disp_matches(substitution, matches, longest_match_length):
             mod_str = "".join([ansi_colorize(mod, "yellow", "bold"), '.'])
         else:
             mod_str = ""
+        # Function: bright cyan
+        if w[-1] == "(":
+            w_str = ansi_colorize(w, "cyan", "bright")
         # Keywords: bright yellow
-        if iskeyword(w_strip):
+        elif iskeyword(w_strip):
             w_str = ansi_colorize(w, "yellow", "bright")
         # Modules: bold yellow
         elif w_strip in sys.modules:
@@ -218,9 +221,6 @@ def comp_disp_matches(substitution, matches, longest_match_length):
         # Private: bright purple
         elif w_strip[0] == "_":
             w_str = ansi_colorize(w, "purple", "bright")
-        # Function: bright cyan
-        elif w[-1] == "(":
-            w_str = ansi_colorize(w, "cyan", "bright")
         # Otherwise: normal
         else:
             w_str = w
