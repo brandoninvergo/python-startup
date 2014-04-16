@@ -111,7 +111,7 @@ def ansi_colorize(text, color, state, prompt=False):
 class CustomPS1:
     prompt = "[{0}]> "
 
-    def __str__(self):
+    def __str__(self, prompt=True):
         """Return a bold green string containing the current place in Readline
         history.
 
@@ -119,7 +119,7 @@ class CustomPS1:
         line_no = readline.get_current_history_length() + 1
         cur_prompt = self.prompt.format(line_no)
         return "{0}".format(ansi_colorize(cur_prompt, "green", "bold",
-                                          prompt=True))
+                                          prompt=prompt))
 
     def __len__(self):
         """Return the length of the prompt without any escape sequences."""
@@ -127,22 +127,12 @@ class CustomPS1:
         cur_prompt = self.prompt.format(line_no)
         return len(cur_prompt)
 
-    def str_noescapes(self):
-        """Return a bold green string containing the current place in Readline
-        history (with no extra escapes).
-
-        """
-        line_no = readline.get_current_history_length() + 1
-        cur_prompt = self.prompt.format(line_no)
-        return "{0}".format(ansi_colorize(cur_prompt, "green", "bold",
-                                          prompt=False))
-
 
 # define custom secondary prompt based on readline history number
 class CustomPS2:
     prompt = "({0})> "
 
-    def __str__(self):
+    def __str__(self, prompt=True):
         """Return a bold yellow string containing the current place in
         Readline history.
 
@@ -150,23 +140,13 @@ class CustomPS2:
         line_no = readline.get_current_history_length() + 1
         cur_prompt = self.prompt.format(line_no)
         return "{0}".format(ansi_colorize(cur_prompt, "yellow", "bold",
-                                          prompt=True))
+                                          prompt=prompt))
 
     def __len__(self):
         """Return the length of the prompt without any escape sequences."""
         line_no = readline.get_current_history_length() + 1
         cur_prompt = self.prompt.format(line_no)
         return len(cur_prompt)
-
-    def str_noescapes(self):
-        """Return a bold yellow string containing the current place in
-        Readline history (with no extra escapes).
-
-        """
-        line_no = readline.get_current_history_length() + 1
-        cur_prompt = self.prompt.format(line_no)
-        return "{0}".format(ansi_colorize(cur_prompt, "yellow", "bold",
-                                          prompt=False))
 
 
 def setup_prompt():
@@ -253,10 +233,10 @@ def comp_disp_matches(substitution, matches, longest_match_length):
                                            longest_match_length + col_len))
     # Redisplay the prompt
     if last_input.strip()[-1] in ["(", "[", "{", ":"]:
-        sys.stdout.write("\n{0}{1}".format(sys.ps2.str_noescapes(),
+        sys.stdout.write("\n{0}{1}".format(sys.ps2.__str__(prompt=False),
                                            readline.get_line_buffer()))
     else:
-        sys.stdout.write("\n{0}{1}".format(sys.ps1.str_noescapes(),
+        sys.stdout.write("\n{0}{1}".format(sys.ps1.__str__(prompt=False),
                                            readline.get_line_buffer()))
 
 
